@@ -1,0 +1,50 @@
+<div class="navbar">
+  <app-dropdown
+    [disabled]="isPlaying"
+    [items]="sortingAlgorithmChoices"
+    [selectedItem]="selectedSortingAlgorithm"
+    (selectedItemChange)="onSortingChoiceChange($event)"
+  ></app-dropdown>
+  <button
+    [disabled]="isPlaying"
+    class="base-text base-button"
+    (click)="onShuffleClick()"
+  >
+    <span class="button-inner-wrapper"
+      ><fa-icon [icon]="faShuffle" size="lg"></fa-icon>Shuffle</span
+    >
+  </button>
+  <div class="flex flex-col items-center justify-center gap-1">
+    <label class="base-text">Speed</label>
+    <input
+      [(ngModel)]="speed"
+      (ngModelChange)="onSpeedChange()"
+      min="25"
+      max="1000"
+      step="25"
+      type="range"
+      class="base-text base-slider slider-reverse"
+    />
+  </div>
+  <div class="flex flex-col items-center justify-center gap-1">
+    <label class="base-text">Size</label>
+    <input
+      [disabled]="isPlaying"
+      [(ngModel)]="size"
+      (ngModelChange)="onSizeChange()"
+      min="10"
+      max="150"
+      step="10"
+      type="range"
+      class="base-text base-slider"
+    />
+  </div>
+  <button class="base-text base-button" (click)="onStartStopClick()">
+    <span class="button-inner-wrapper" *ngIf="!isPlaying"
+      ><fa-icon [icon]="faCirclePlay" size="lg"></fa-icon>Start</span
+    >
+    <span class="button-inner-wrapper" *ngIf="isPlaying"
+      ><fa-icon [icon]="faCircleStop" size="lg"></fa-icon>Stop</span
+    >
+  </button>
+</div>

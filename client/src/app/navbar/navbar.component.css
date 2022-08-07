@@ -1,0 +1,18 @@
+.navbar {
+  @apply w-full h-full bg-cyan-700 flex flex-row justify-end pr-6 pl-6 gap-12;
+  padding-bottom: 0.6rem;
+  padding-top: 0.6rem;
+}
+
+.button {
+    @apply h-full flex flex-row gap-3 justify-center items-center transition-colors bg-zinc-900 hover:bg-zinc-300 hover:text-zinc-900 pl-4 pr-4 rounded-sm font-sans text-base font-bold text-zinc-300;
+    min-width: 10rem;
+}
+
+.button-inner-wrapper {
+    @apply flex flex-row gap-3;
+}
+
+.slider-reverse {
+    direction: rtl;
+}

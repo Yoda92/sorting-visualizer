@@ -1,0 +1,11 @@
+<div class="lines-wrapper">
+  <div
+    *ngFor="let line of lines"
+    [ngStyle]="{
+      width: lines | lineWidthStyle,
+      height: line.value | lineHeightStyle: linesMaxValue
+    }"
+  >
+    <div [ngClass]="['line', line.color | lineColorClass]"></div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.app-wrapper {
+    @apply w-full h-full flex flex-col gap-4;
+}
+
+.navbar-wrapper {
+    @apply w-full;
+    height: 4.5rem;
+}
+
+.sorting-visualization-wrapper {
+    @apply w-full h-full;
+}

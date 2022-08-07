@@ -1,0 +1,9 @@
+.lines-wrapper {
+  @apply w-full h-full flex items-end flex-row;
+}
+
+.line {
+  @apply h-full rounded-t-sm;
+  margin-right: 10%;
+  margin-left: 10%;
+}
