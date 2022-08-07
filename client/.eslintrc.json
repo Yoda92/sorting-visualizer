@@ -6,7 +6,6 @@
       "files": ["*.ts"],
       "parserOptions": {
         "project": ["tsconfig.json"],
-        "tsconfigRootDir": "client",
         "createDefaultProgram": true
       },
       "extends": [
