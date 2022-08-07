@@ -43,7 +43,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: deploy_dist
+          path: downloads/deploy_dist
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          folder: deploy_dist/client
+          folder: downloads/deploy_dist
