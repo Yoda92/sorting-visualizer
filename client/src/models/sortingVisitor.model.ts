@@ -14,4 +14,16 @@ export interface SortingVisitor {
     sleepToken: SleepToken,
     cancellationToken: CancellationToken
   ): void;
+
+  bubbleSort(
+    lines: Array<Line>,
+    sleepToken: SleepToken,
+    cancellationToken: CancellationToken
+  ): void;
+
+  quickSort(
+    lines: Array<Line>,
+    sleepToken: SleepToken,
+    cancellationToken: CancellationToken
+  ): void;
 }

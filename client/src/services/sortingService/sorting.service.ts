@@ -7,6 +7,8 @@ import { CancelError } from 'src/errors/cancel.error';
 import { SortingType } from 'src/models/sortingType.model';
 import { SortingVisitor } from 'src/models/sortingVisitor.model';
 import { MergeSortAlgorithm } from './sortingAlgorithms/mergeSort.algorithm';
+import { BubbleSortAlgorithm } from './sortingAlgorithms/bubbleSort.algorithm';
+import { QuickSortAlgorithm } from './sortingAlgorithms/quickSort.algorithm';
 
 @Injectable({
   providedIn: 'root',
@@ -38,6 +40,26 @@ export class SortingService implements SortingVisitor {
     cancellationToken: CancellationToken
   ): Promise<void> {
     return InsertionSortAlgorithm.sort(lines, sleepToken, cancellationToken).catch(
+      this.handleError
+    );
+  }
+
+  public async bubbleSort(
+    lines: Array<Line>,
+    sleepToken: SleepToken,
+    cancellationToken: CancellationToken
+  ): Promise<void> {
+    return BubbleSortAlgorithm.sort(lines, sleepToken, cancellationToken).catch(
+      this.handleError
+    );
+  }
+
+  public async quickSort(
+    lines: Array<Line>,
+    sleepToken: SleepToken,
+    cancellationToken: CancellationToken
+  ): Promise<void> {
+    return QuickSortAlgorithm.sort(lines, sleepToken, cancellationToken).catch(
       this.handleError
     );
   }
