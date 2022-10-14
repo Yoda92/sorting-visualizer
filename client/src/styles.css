@@ -52,6 +52,5 @@ body {
 }
 
 .base-button {
-  @apply h-full disabled:text-zinc-500 disabled:hover:bg-zinc-900 flex flex-row gap-3 justify-center items-center transition-colors bg-zinc-900 hover:bg-zinc-300 hover:text-zinc-900 pl-4 pr-4 rounded-md;
-  min-width: 10rem;
+  @apply h-12 w-40 disabled:text-zinc-500 disabled:hover:bg-zinc-900 flex flex-row gap-3 justify-center items-center transition-colors bg-zinc-900 hover:bg-zinc-300 hover:text-zinc-900 pl-4 pr-4 rounded-md;
 }

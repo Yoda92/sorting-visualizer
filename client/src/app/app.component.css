@@ -3,10 +3,9 @@
 }
 
 .navbar-wrapper {
-    @apply w-full;
-    height: 4.5rem;
+    @apply absolute w-full h-full;
 }
 
 .sorting-visualization-wrapper {
-    @apply w-full h-full;
+    @apply absolute pt-20 w-full h-full;
 }

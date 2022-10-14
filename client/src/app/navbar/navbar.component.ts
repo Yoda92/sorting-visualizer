@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   faCirclePlay,
   faCircleStop,
@@ -22,7 +22,9 @@ import { SortingAlgorithmUtility } from 'src/utilities/sortingAlgorithm.utility'
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements ActionVisitor {
+export class NavbarComponent implements ActionVisitor, OnInit {
+  @ViewChild('hamburger') hamburger?: ElementRef<HTMLInputElement>;
+  @ViewChild('navmenu') navmenu?: ElementRef<HTMLInputElement>;
   public faCirclePlay = faCirclePlay;
   public faCircleStop = faCircleStop;
   public faShuffle = faShuffle;
@@ -45,13 +47,33 @@ export class NavbarComponent implements ActionVisitor {
       .subscribe((action: Action) => this.handleAction(action));
   }
 
+  ngOnInit(): void {
+    document.querySelectorAll('.nav-item').forEach((navItem) => {
+      navItem.addEventListener('click', () => this.closeHamburgerMenu());
+    });
+  }
+
+  public closeHamburgerMenu(): void {
+    this.hamburger?.nativeElement.classList.remove('active');
+    this.navmenu?.nativeElement.classList.remove('active');
+  }
+
+  public onHamburgerClick(): void {
+    this.hamburger?.nativeElement.classList.toggle('active');
+    this.navmenu?.nativeElement.classList.toggle('active');
+  }
+
   public onPlayAction(action: PlayAction): void {
     this.isPlaying = action.getValue();
   }
+
   public onShuffleAction(_: ShuffleAction): void {}
+
   public onSizeAction(_: SizeAction): void {}
+
   public onSpeedAction(_: SpeedAction): void {}
-  public onSortingChoiceAction(action: SortingChoiceAction): void {}
+
+  public onSortingChoiceAction(_: SortingChoiceAction): void {}
 
   public onSortingChoiceChange(item: ChoiceItem<SortingType>): void {
     this.stateService.publishSortingChoice(item);
@@ -60,6 +82,9 @@ export class NavbarComponent implements ActionVisitor {
   public onStartStopClick(): void {
     this.isPlaying = !this.isPlaying;
     this.stateService.publishIsPlaying(this.isPlaying);
+    if (this.isPlaying) {
+      this.closeHamburgerMenu();
+    }
   }
 
   public onShuffleClick(): void {
